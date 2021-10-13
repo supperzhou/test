@@ -1,0 +1,21 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/hotevent
+    username: root
+    password: ok
+  mvc:
+    view:
+      suffix: .jsp
+      prefix: /
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    password: 123456
+logging:
+  level:
+    root: info
+    com.kgc.mapper: debug
+  config: classpath:lombok-spring.xml
+mybatis:
+  mapper-locations: classpath:mapper/*.xml

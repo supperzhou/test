@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kgc.mapper.HoteventsMapper">
+<select id="getAll" resultType="com.kgc.pojo.Hotevents">
+select * from hotevents
+<where>
+    <if test="keyWord!=null and keyWord!=''">
+        keyWord like concat('%',#{keyWord},'%')
+    </if>
+</where>
+    limit #{pageIndex},#{pageSize}
+</select>
+    <select id="getCount" resultType="int">
+        select count(*) from hotevents
+        <where>
+            <if test="keyWord!=null and keyWord!=''">
+                keyWord like concat('%',#{keyWord},'%')
+            </if>
+        </where>
+    </select>
+    <select id="getById" resultType="com.kgc.pojo.Hotevents">
+select * from hotevents where id=#{id}
+    </select>
+</mapper>
